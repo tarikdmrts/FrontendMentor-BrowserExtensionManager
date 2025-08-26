@@ -1,0 +1,101 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: hsl(3, 71%, 56%);
+}
+
+input:checked + .slider::before {
+  transform: translateX(16px);
+}
+.extension-container {
+  width: 30%;
+  border-radius: 15px;
+  background: hsl(200, 60%, 99%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  padding: 10px 10px 10px 10px;
+}
+.extension-container.dark {
+  background: hsl(226, 25%, 17%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+  color: hsl(200, 60%, 99%);
+}
+.extension-details {
+  display: flex;
+  margin-bottom: 20px;
+}
+.extension-spacer {
+  margin-left: 10px;
+}
+.extension-interactions {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.extension-toggle-btn {
+  border-radius: 15px;
+  padding: 6px 13px;
+  cursor: pointer;
+  background: hsl(200, 60%, 99%);
+  border: 0.5px solid hsl(0, 0%, 78%);
+}
+
+.extension-toggle-btn:hover {
+  background: hsl(3, 86%, 64%) !important;
+  color: hsl(200, 60%, 99%);
+  border: 0.5px solid hsl(3, 86%, 64%);
+}
+.extension-toggle-btn.dark {
+  background: hsl(226, 25%, 17%);
+}
+.extension-description {
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+.extension-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.extension-logo{
+    width: 50px;
+}
+
+.slider.dark{
+    background-color: hsl(226, 11%, 37%);
+}
