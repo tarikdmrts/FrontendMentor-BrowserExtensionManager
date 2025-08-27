@@ -4,11 +4,31 @@ import { Logo } from "./Logo.jsx";
 import { Extension } from "./Extension.jsx";
 import DarkButtonLogo from "./assets/images/icon-moon.svg";
 import LightButtonLogo from "./assets/images/icon-sun.svg";
-import Data from "./data.json";
+import initialData from "./data.json";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
+  const [data, setData] = useState(initialData);
+  const [filter, setFilter] = useState("all");
+
+  const filteredData = data.filter((ext) => {
+    if (filter === "all") return true;
+    if (filter === "active") return ext.isActive;
+    if (filter === "inactive") return !ext.isActive;
+  });
+
+  const toggleExtensionActive = (name) => {
+    setData(prev =>
+      prev.map(ext =>
+        ext.name === name ? { ...ext, isActive: !ext.isActive } : ext
+      )
+    );
+  };
+  
+  const removeExtension = (name) => {
+    setData(prev => prev.filter(ext => ext.name !== name));
+  };
 
   return (
     <div className={`main ${darkMode ? "dark" : ""}`}>
@@ -37,13 +57,34 @@ function App() {
             Extensions List
           </h1>
           <div className={`extension-list-buttons ${darkMode ? "dark" : ""}`}>
-            <button className="extension-list-btn">All</button>
-            <button className="extension-list-btn">Active</button>
-            <button className="extension-list-btn">Inactive</button>
+            <button
+              className={`extension-list-btn ${
+                filter === "all" ? "active" : ""
+              }`}
+              onClick={() => setFilter("all")}
+            >
+              All
+            </button>
+            <button
+              className={`extension-list-btn ${
+                filter === "active" ? "active" : ""
+              }`}
+              onClick={() => setFilter("active")}
+            >
+              Active
+            </button>
+            <button
+              className={`extension-list-btn ${
+                filter === "inactive" ? "active" : ""
+              }`}
+              onClick={() => setFilter("inactive")}
+            >
+              Inactive
+            </button>
           </div>
         </div>
         <div className={`extensions ${darkMode ? "dark" : ""}`}>
-          {Data.map((ext) => (
+          {filteredData.map((ext) => (
             <Extension
               key={`${ext.name}-key`}
               logo={ext.logo}
@@ -51,6 +92,8 @@ function App() {
               description={ext.description}
               darkMode={darkMode}
               isActive={ext.isActive}
+              onToggle={() => toggleExtensionActive(ext.name)}
+              onRemove={() => removeExtension(ext.name)} 
             />
           ))}
         </div>
