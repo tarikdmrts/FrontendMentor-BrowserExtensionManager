@@ -26,7 +26,7 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS
 - Flexbox
 - Desktop-first workflow
 - [React](https://reactjs.org/) - JS library
