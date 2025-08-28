@@ -20,17 +20,17 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: (https://www.frontendmentor.io/solutions/browser-extension-manager-design-with-react-sYVyAEi0md)
+- Live Site URL: (https://frontend-mentor-browser-extension-m.vercel.app/)
 
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Desktop-first workflow
 - [React](https://reactjs.org/) - JS library
+- Vite
 
 ## Author
 
